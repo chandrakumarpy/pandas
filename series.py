@@ -26,3 +26,5 @@ s= pd.Series(cars, name = 'cars')
 print(s[s>=1000000])
 print(s[(s>=1000000) & (s<=1500000)])
 print(s[~(s>=1000000)])
+s["Hyundai i20"] = 1200000
+print(s)
