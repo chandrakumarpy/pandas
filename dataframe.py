@@ -7,6 +7,9 @@ data = {
     "Transmission": ["Manual", "Manual", None, "Automatic", "Manual"]
 }
 df = pd.DataFrame(data)
+print(df.shape)
+print(df.info())
+print(df.describe())
 print(df.iloc[2:4])
 print(df.iloc[2:4, 0:2])
 print(df.loc[2:3, ["Car Name","Price"]])
