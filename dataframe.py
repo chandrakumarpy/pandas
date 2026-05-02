@@ -35,3 +35,25 @@ print(rows_all_null)
 df["Mileage"] = df["Mileage"].apply(lambda x : df["Mileage"].mean() if pd.isnull(x) else x)
 df["Price"].fillna(df["Price"].mean(), inplace= True)
 df.fillna(method = 'ffill', inplace= True) # for back values add 'bfill'
+
+# pandas merge
+
+import pandas as pd
+customers = {
+    "customer_id": [1, 2, 3, 4],
+    "customer_name": ["Amit", "Ravi", "Sita", "John"]
+}
+orders = {
+    "order_id": [101, 102, 103, 104],
+    "customer_id": [1, 2, 2, 5],  # notice 5 (no match)
+    "amount": [500, 700, 300, 900]
+}
+df1 = pd.DataFrame(customers)
+# df1.set_index("customer_id", inplace=True)
+df2 = pd.DataFrame(orders)
+# df2.set_index("customer_id", inplace=True)
+
+# df = pd.merge(df1, df2, on ="customer_id", how = 'left')
+# df = df1.join(df2, how = "inner")
+df = pd.concat([df1, df2], axis = 1)
+print(df)
