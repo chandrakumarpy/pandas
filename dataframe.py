@@ -17,3 +17,16 @@ df.drop("Fuel Type", axis = 1, inplace = True) # this change the original values
 df["Mileage"] = df["Mileage"] + 5 # broad cast increase the values
 df.rename(columns = {'Car Name':'indian_car'}, inplace = True)
 print(df)
+
+# null values and drop null values
+
+# print(df.isnull().sum())
+# print(df.dropna())
+# print(df.dropna(axis=1))
+# print(df.dropna(subset=["Price"]))
+rows_all_null = df[df.isnull().any(axis=1)]
+print(rows_all_null)
+# axis=1 → row-wise
+# .any() → at least one null
+# .all() → all null
+# .sum() → count of nulls
