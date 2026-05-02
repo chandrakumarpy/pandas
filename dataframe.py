@@ -30,3 +30,8 @@ print(rows_all_null)
 # .any() → at least one null
 # .all() → all null
 # .sum() → count of nulls
+
+# add fill values 
+df["Mileage"] = df["Mileage"].apply(lambda x : df["Mileage"].mean() if pd.isnull(x) else x)
+df["Price"].fillna(df["Price"].mean(), inplace= True)
+df.fillna(method = 'ffill', inplace= True) # for back values add 'bfill'
